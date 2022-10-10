@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>User Register</title>
+</head>
+<body>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="card">
+      <h2 class="card-header bg-info text-white p-5">
+        Welcome to User Registration Page
+      </h2>
+      <div class="card-body">
+        <form th:object="${user}" th:action="@{/user/create}" method="post">
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="inputGivenName">Given Name</label>
+              <input type="text" class="form-control" id="inputGivenName" placeholder="Given Name" th:field="*{givenName}">
+              <div class="text-danger" th:if="${#fields.hasErrors('givenName')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('givenName')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+            <div class="form-group col">
+              <label for="surname">Surname</label>
+              <input type="text" class="form-control" id="surname" placeholder="Surname" th:field="*{surname}">
+              <div class="text-danger" th:if="${#fields.hasErrors('surname')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('surname')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Email" th:field="*{email}">
+              <div class="text-danger" th:if="${#fields.hasErrors('email')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('email')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phoneNumber">phoneNumber</label>
+              <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}">
+              <div class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('phoneNumber')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:field="*{address}">
+            <div class="text-danger" th:if="${#fields.hasErrors('address')}">
+              <ol>
+                <li th:each="error : ${#fields.errors('address')}" th:text="${error}"></li>
+              </ol>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" th:field="*{address2}">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="town">Town</label>
+              <input type="text" class="form-control" id="town" th:field="*{town}">
+              <div class="text-danger" th:if="${#fields.hasErrors('town')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('town')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="county">County</label>
+              <input type="text" class="form-control" id="county" th:field="*{county}">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country" th:field="*{country}">
+              <div class="text-danger" th:if="${#fields.hasErrors('country')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('country')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="postalCode">PostalCode</label>
+              <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}">
+              <div class="text-danger" th:if="${#fields.hasErrors('postalCode')}">
+                <ol>
+                  <li th:each="error : ${#fields.errors('postalCode')}" th:text="${error}"></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-danger">Register</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
